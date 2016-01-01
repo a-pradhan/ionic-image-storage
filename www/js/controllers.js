@@ -54,12 +54,27 @@ var controllers = angular.module("app.controllers", [])
             }, function(error) {
               console.log("Error uploading file")
             });
-          //for (var i = 0; i < savedImages.length; i++) {
-          //  mailImages.push('' + $scope.urlForImage(savedImages[i]));
-          //}
+
 
         } else {
           // if not Android
+
+          for (var i = 0; i < savedImages.length; i++) {
+            mailImages.push('' + $scope.urlForImage(savedImages[i]));
+          }
+
+          $cordovaSocialSharing.shareViaEmail("Test Email",
+            "Test Results",
+            ["apradhan.general@gmail.com"],
+            [],
+            [],
+            mailImages
+          ).then(function (result) {
+            console.log("Opening email app");
+          }, function (err) {
+            console.log("An error occurred");
+          })
+
         }
       };
 
