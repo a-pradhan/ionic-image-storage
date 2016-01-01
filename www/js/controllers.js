@@ -57,7 +57,7 @@ var controllers = angular.module("app.controllers", [])
 
 
         } else {
-          // if not Android
+          // if not Android - i.e iOS
 
           for (var i = 0; i < savedImages.length; i++) {
             mailImages.push('' + $scope.urlForImage(savedImages[i]));
@@ -79,7 +79,7 @@ var controllers = angular.module("app.controllers", [])
       };
 
     };
-
+    // appends file path to imageName
     $scope.urlForImage = function (imageName) {
       var trueOrigin = cordova.file.dataDirectory + imageName;
       return trueOrigin;
